@@ -1,8 +1,7 @@
 name: Periodic health check
 on:
   schedule:
-    # prettier-ignore
-    -cron: '* * * * *'
+    - cron: "* * * * *"
 jobs:
   steps:
     - name: Check the deployed service URL
