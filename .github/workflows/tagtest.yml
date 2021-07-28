@@ -22,3 +22,15 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: boolean value
+        env:
+          flag: ${{ github.event_name == 'push' }} && !${{ contains(github.event.commits.*.message, '#skip') }}
+        run: echo "$flag"
+      - name: boolean value
+        env:
+          flag: ${{ github.event_name == 'push' }}
+        run: echo "$flag"
+      - name: boolean value
+        env:
+          flag: ${{ contains(github.event.commits.*.message, '#skip') }}
+        run: echo "$flag"
